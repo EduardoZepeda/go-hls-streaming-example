@@ -10,7 +10,10 @@ import (
 func main() {
 	http.Handle("/", handlers())
 	fmt.Println("Server is ready listening on http://localhost:8000")
-	http.ListenAndServe(":8000", nil)
+	err := http.ListenAndServe(":8000", nil)
+	if err != nil {
+		fmt.Println(err)
+	}
 }
 
 func handlers() *mux.Router {
